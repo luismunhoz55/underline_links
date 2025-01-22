@@ -10,7 +10,7 @@ export default function Dashboard() {
                     <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
                         Dashboard
                     </h2>
-                    <PrimaryButton>Salvar link</PrimaryButton>
+                    <PrimaryButton href="/links">Salvar link</PrimaryButton>
                 </div>
             }
         >

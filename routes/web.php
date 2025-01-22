@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LinkController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,8 @@ Route::get("/", function () {
 });
 
 Route::redirect("/", "/dashboard");
+
+Route::resource("links", LinkController::class)->only(["index", "store"]);
 
 Route::get("/dashboard", function () {
     return Inertia::render("Dashboard");
