@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categorie;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class CategorieController extends Controller
 {
@@ -12,7 +13,7 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render("Categories/Index", []);
     }
 
     /**
@@ -28,7 +29,13 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            "name" => "required|string",
+        ]);
+
+        Categorie::create($validated);
+
+        return redirect("/dashboard");
     }
 
     /**
