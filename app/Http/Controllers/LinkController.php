@@ -15,7 +15,9 @@ class LinkController extends Controller
      */
     public function index()
     {
-        return Inertia::render("Links/Index", []);
+        return Inertia::render("Links/Index", [
+            "links" => Link::with("user:id,name")->latest()->get(),
+        ]);
     }
 
     /**

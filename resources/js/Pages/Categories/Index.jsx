@@ -3,6 +3,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { useForm, Head } from "@inertiajs/react";
+import SecondaryButton from "@/Components/SecondaryButton";
 
 export default function Index({ auth }) {
     const { data, setData, post, processing, reset, errors } = useForm({
@@ -31,13 +32,22 @@ export default function Index({ auth }) {
                         onChange={(e) => setData("name", e.target.value)}
                     />
                     <InputError message={errors.message} className="mt-2" />
-                    <PrimaryButton
-                        type="submit"
-                        className="mt-4"
-                        disabled={processing}
-                    >
-                        Criar
-                    </PrimaryButton>
+                    <div>
+                        <PrimaryButton
+                            type="submit"
+                            className="mt-4 mr-3"
+                            disabled={processing}
+                        >
+                            Criar
+                        </PrimaryButton>
+                        <SecondaryButton
+                            onClick={() =>
+                                (window.location.href = "/dashboard")
+                            }
+                        >
+                            Voltar
+                        </SecondaryButton>
+                    </div>
                 </form>
             </div>
         </AuthenticatedLayout>

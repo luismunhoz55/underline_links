@@ -1,6 +1,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import PrimaryButton from "@/Components/PrimaryButton";
+import SecondaryButton from "@/Components/SecondaryButton";
 
 export default function Dashboard() {
     return (
@@ -10,11 +11,20 @@ export default function Dashboard() {
                     <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
                         Dashboard
                     </h2>
-                    <PrimaryButton
-                        onClick={() => (window.location.href = "/links")}
-                    >
-                        Salvar link
-                    </PrimaryButton>
+                    <div className="space-x-3">
+                        <SecondaryButton
+                            onClick={() =>
+                                (window.location.href = "/categories")
+                            }
+                        >
+                            Criar categoria
+                        </SecondaryButton>
+                        <PrimaryButton
+                            onClick={() => (window.location.href = "/links")}
+                        >
+                            Salvar link
+                        </PrimaryButton>
+                    </div>
                 </div>
             }
         >

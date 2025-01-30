@@ -16,13 +16,12 @@ Route::get("/", function () {
     ]);
 });
 
-Route::redirect("/", "/dashboard");
-
-Route::resource("links", LinkController::class)->only(["index", "store"]);
-Route::resource("categories", CategorieController::class)->only([
-    "index",
-    "store",
-]);
+Route::resource("links", LinkController::class)
+    ->only(["index", "store"])
+    ->middleware(["auth", "verified"]);
+Route::resource("categories", CategorieController::class)
+    ->only(["index", "store"])
+    ->middleware(["auth", "verified"]);
 
 Route::get("/dashboard", function () {
     return Inertia::render("Dashboard");

@@ -3,8 +3,9 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { useForm, Head } from "@inertiajs/react";
+import SecondaryButton from "@/Components/SecondaryButton";
 
-export default function Index({ auth }) {
+export default function Index({ auth, links }) {
     const { data, setData, post, processing, reset, errors } = useForm({
         url: "",
         title: "",
@@ -46,14 +47,31 @@ export default function Index({ auth }) {
                         onChange={(e) => setData("description", e.target.value)}
                     ></textarea>
                     <InputError message={errors.message} className="mt-2" />
-                    <PrimaryButton
-                        type="submit"
-                        className="mt-4"
-                        disabled={processing}
-                    >
-                        Salvar
-                    </PrimaryButton>
+                    <div>
+                        <PrimaryButton
+                            type="submit"
+                            className="mt-4 mr-3"
+                            disabled={processing}
+                        >
+                            Salvar
+                        </PrimaryButton>
+                        <SecondaryButton
+                            onClick={() =>
+                                (window.location.href = "/dashboard")
+                            }
+                        >
+                            Voltar
+                        </SecondaryButton>
+                    </div>
                 </form>
+                <div className="mt-6">
+                    {links.map((link) => (
+                        <div className="mb-3 p-3 bg-white rounded">
+                            <div>{link.title}</div>
+                            <div>{link.url}</div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </AuthenticatedLayout>
     );
